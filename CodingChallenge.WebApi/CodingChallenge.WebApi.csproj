@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CodingChallenge.App\CodingChallenge.App.csproj" />
+    <ProjectReference Include="..\CodingChallenge.Repository\CodingChallenge.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
