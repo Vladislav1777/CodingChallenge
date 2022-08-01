@@ -1,3 +1,6 @@
+using CodingChallenge.App;
+using CodingChallenge.App.Common.Mappings;
+using CodingChallenge.App.Interfaces;
 using CodingChallenge.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -5,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace CodingChallenge.WebApi
 {
@@ -20,6 +24,13 @@ namespace CodingChallenge.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(config =>
+            {
+                config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+                config.AddProfile(new AssemblyMappingProfile(typeof(ICodingChallengeDbContext).Assembly));
+
+            });
+            services.AddApplication();
             services.AddRepository(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
