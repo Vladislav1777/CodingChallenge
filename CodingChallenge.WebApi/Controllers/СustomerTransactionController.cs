@@ -2,12 +2,9 @@
 
 namespace CodingChallenge.WebApi.Controllers
 {
-    [Route("api/[controller]")]
-    public class CustomerTransactionController : Controller
+
+    public class CustomerTransactionController 
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
     }
 }

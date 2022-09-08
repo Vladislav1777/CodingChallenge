@@ -6,7 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 namespace CodingChallenge.Repository
 {
     public static class DependencyInjection
-    {        public static IServiceCollection AddRepository(this IServiceCollection services,
+    {
+        public static IServiceCollection AddRepository(this IServiceCollection services,
            IConfiguration configuration)
         {
             var connectionString = configuration["DbConnection"];
@@ -15,8 +16,10 @@ namespace CodingChallenge.Repository
             {
                 options.UseSqlite(connectionString);
             });
-            services.AddScoped<ICodingChallengeDbContext>(provider =>
-                provider.GetService<CodingChallengeDbContext>());
+
+            services.AddScoped<ICodingChallengeDbContext, CodingChallengeDbContext>();
+
+            services.AddScoped<ICodingChallengeRepository, CodingChallengeRepository>();
 
             return services;
         }

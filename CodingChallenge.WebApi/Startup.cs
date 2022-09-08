@@ -2,6 +2,7 @@ using CodingChallenge.App;
 using CodingChallenge.App.Common.Mappings;
 using CodingChallenge.App.Interfaces;
 using CodingChallenge.Repository;
+using CodingChallenge.Servise;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,9 +30,11 @@ namespace CodingChallenge.WebApi
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
                 config.AddProfile(new AssemblyMappingProfile(typeof(ICodingChallengeDbContext).Assembly));
 
-            });
-            services.AddApplication();
+            });          
+
             services.AddRepository(Configuration);
+            services.AddServise();
+            services.AddApplication();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

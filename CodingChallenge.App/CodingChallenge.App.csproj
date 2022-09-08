@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CustomerBonusPoin\Queries\GetCustomerBonusPoins\" />
     <Folder Include="Customers\Commands\CreateCustomer\" />
     <Folder Include="CustomerTransactions\Commands\CreateCustomerTransaction\" />
     <Folder Include="CustomerTransactions\Queries\GetCustomerTransactions\" />

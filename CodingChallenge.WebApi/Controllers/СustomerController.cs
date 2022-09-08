@@ -17,13 +17,10 @@ namespace CodingChallenge.WebApi.Controllers
 
         [HttpGet]
         public async Task<ActionResult<CustomersVm>> GetAll()
-        {
-            var query = new GetCustomersQuery();
-            var vm = await _mediator.Send(query);
+        {           
+            var vm = await _mediator.Send(new GetCustomersQuery());
 
             return Ok(vm);
         }
-
-
     }
 }
